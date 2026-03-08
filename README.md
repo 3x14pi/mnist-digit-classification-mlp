@@ -1,10 +1,8 @@
-# Progetto 4 - Machine Learning su MNIST (Esercizio 2)
+# MNIST Digit Classification with MLP (MATLAB)
 
 Autore: **Antonio Ferri**  
-Data relazione: **9 luglio 2022**
 
-Questo repository contiene la parte di **Machine Learning (Esercizio 2)** del Progetto 4.
-Il focus è la classificazione delle cifre MNIST (`0-9`) con una rete neurale feed-forward in MATLAB, insieme a un'analisi qualitativa e quantitativa degli errori.
+Questo repository contiene un progetto di **Machine Learning** per la classificazione delle cifre MNIST (`0-9`) con una rete neurale feed-forward in MATLAB, insieme a un'analisi qualitativa e quantitativa degli errori.
 
 ## Contenuto del progetto
 
@@ -40,9 +38,9 @@ La rete usata nel training è:
 - hidden layer 2: `60` neuroni
 - output layer: `10` neuroni (una classe per cifra)
 
-Learning rate usato nella relazione: `0.0058`.
+Learning rate usato negli esperimenti: `0.0058`.
 
-### Inizializzazione (come in relazione)
+### Inizializzazione
 
 - `w12 = randn(80,784) * sqrt(2/784)`
 - `w23 = randn(60,80) * sqrt(2/80)`
@@ -58,9 +56,9 @@ Per ogni epoca di training:
 3. **Gradient Descent** su pesi e bias
 4. Shuffle dei campioni per l'epoca successiva
 
-L'addestramento in relazione è eseguito su **50 epoche**.
+L'addestramento è eseguito su **50 epoche**.
 
-## Risultati riportati nella relazione
+## Risultati ottenuti
 
 Su 10.000 immagini di test:
 
@@ -73,7 +71,7 @@ Il testo evidenzia che:
 - una parte degli errori è dovuta ad ambiguità visiva (anche per un umano),
 - altre misclassificazioni avvengono su cifre apparentemente ben leggibili.
 
-## Analisi degli errori (dal report)
+## Analisi degli errori
 
 Dalla distribuzione degli errori sulle 276 immagini non predette:
 
@@ -81,9 +79,7 @@ Dalla distribuzione degli errori sulle 276 immagini non predette:
 - classi come **1** e **5** risultano meno problematiche,
 - possibile direzione migliorativa: aumentare esempi di training per classi più difficili (es. cifra 3).
 
-## Figures extracted from the report
-
-The figures below are extracted from `Progetto4.pdf` as image-only content (not full page screenshots).
+## Figure
 
 ### 1) Error analysis chart
 
@@ -111,11 +107,6 @@ Parametri salvati:
 
 - pesi: `wtwo.mat`, `wthree.mat`, `wfour.mat`
 - bias: `btwo.mat`, `bthree.mat`, `bfour.mat`
-
-Relazione:
-
-- `Progetto4.pdf` (documento principale)
-- `Proj4.pdf` (copia/versione alternativa)
 
 ## Come eseguire
 
@@ -162,4 +153,4 @@ Il progetto dimostra una pipeline completa di classificazione su MNIST con accur
 
 ## Nota finale
 
-Questo README è focalizzato sulla parte **Esercizio 2** e segue i risultati discussi nella relazione originale.
+Questo README descrive in modo autonomo il progetto e i risultati principali.
