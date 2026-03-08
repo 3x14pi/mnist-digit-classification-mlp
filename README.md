@@ -81,21 +81,21 @@ Dalla distribuzione degli errori sulle 276 immagini non predette:
 - classi come **1** e **5** risultano meno problematiche,
 - possibile direzione migliorativa: aumentare esempi di training per classi più difficili (es. cifra 3).
 
-## Grafici e figure (estratti dal PDF)
+## Figures extracted from the report
 
-Le immagini seguenti sono estratte dalla sezione Machine Learning di `Progetto4.pdf`.
+The figures below are extracted from `Progetto4.pdf` as image-only content (not full page screenshots).
 
-### 1) Percentuale errore sulle immagini non predette
+### 1) Error analysis chart
 
-![Percentuale errore](figures/progetto4_p01.png)
+![Error analysis chart](figures/images_only_02_crop.png)
 
-### 2) Differenze tra attivazioni degli strati interni
+### 2) Internal layer comparison chart
 
-![Differenze strati interni](figures/progetto4_p02.png)
+![Internal layer comparison chart](figures/images_only_03_crop.png)
 
-### 3) Discussione finale e confronto prestazionale
+### 3) Final result/summary visualization
 
-![Discussione finale](figures/progetto4_p03.png)
+![Final result summary](figures/images_only_08_crop.png)
 
 ## Struttura file
 
