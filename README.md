@@ -1,85 +1,85 @@
 # MNIST Digit Classification with MLP (MATLAB)
 
-Autore: **Antonio Ferri**  
+Author: **Antonio Ferri**
 
-Questo repository contiene un progetto di **Machine Learning** per la classificazione delle cifre MNIST (`0-9`) con una rete neurale feed-forward in MATLAB, insieme a un'analisi qualitativa e quantitativa degli errori.
+This repository contains a **Machine Learning** project for MNIST digit classification (`0-9`) using a feed-forward neural network implemented in MATLAB, with both qualitative and quantitative error analysis.
 
-## Contenuto del progetto
+## Project Overview
 
-- training della rete su dataset MNIST,
-- test su set separato,
-- analisi delle misclassificazioni,
-- osservazione del comportamento degli strati nascosti,
-- discussione dei limiti e possibili miglioramenti.
+- network training on MNIST,
+- testing on a separate dataset,
+- misclassification analysis,
+- hidden-layer activation inspection,
+- discussion of limitations and possible improvements.
 
-## Obiettivo dell'Esercizio 2
+## Goal
 
-Far riconoscere a una macchina cifre scritte a mano, rappresentate come immagini in scala di grigio `28x28`, usando un **Multi Layer Perceptron (MLP)** con due hidden layer.
+Train a model to recognize handwritten digits represented as `28x28` grayscale images using a **Multi-Layer Perceptron (MLP)** with two hidden layers.
 
-## Dataset e formato
+## Dataset and Format
 
-Nel progetto i dati sono organizzati con la convenzione:
+Data is organized as follows:
 
-- prima colonna: etichetta corretta (digit `0..9`),
-- colonne successive: pixel dell'immagine (784 valori),
-- immagini normalizzate in `[0,1]` prima del passaggio in rete.
+- first column: ground-truth label (`0..9`),
+- remaining columns: image pixels (`784` values),
+- pixel values normalized in `[0,1]` before inference/training.
 
-File principali dei dati:
+Main dataset files:
 
 - `data_train.mat` -> training set
 - `data_test.mat` -> test set
 
-## Architettura della rete
+## Network Architecture
 
-La rete usata nel training è:
+The model used for training is:
 
-- input layer: `784` feature
-- hidden layer 1: `80` neuroni
-- hidden layer 2: `60` neuroni
-- output layer: `10` neuroni (una classe per cifra)
+- input layer: `784` features
+- hidden layer 1: `80` neurons
+- hidden layer 2: `60` neurons
+- output layer: `10` neurons (one per class)
 
-Learning rate usato negli esperimenti: `0.0058`.
+Learning rate used in experiments: `0.0058`.
 
-### Inizializzazione
+### Initialization
 
 - `w12 = randn(80,784) * sqrt(2/784)`
 - `w23 = randn(60,80) * sqrt(2/80)`
 - `w34 = randn(10,60) * sqrt(2/60)`
-- bias inizializzati random (`b12`, `b23`, `b34`)
+- random bias initialization (`b12`, `b23`, `b34`)
 
-## Pipeline algoritmica
+## Training Pipeline
 
-Per ogni epoca di training:
+For each training epoch:
 
 1. **Feed-Forward**
 2. **Back-Propagation**
-3. **Gradient Descent** su pesi e bias
-4. Shuffle dei campioni per l'epoca successiva
+3. **Gradient Descent** update for weights and biases
+4. sample shuffling for the next epoch
 
-L'addestramento è eseguito su **50 epoche**.
+Training is run for **50 epochs**.
 
-## Risultati ottenuti
+## Reported Results
 
-Su 10.000 immagini di test:
+On 10,000 test images:
 
-- corrette: **9724**
-- errate: **276**
-- errore: **2.76%**
+- correct predictions: **9724**
+- wrong predictions: **276**
+- error rate: **2.76%**
 
-Il testo evidenzia che:
+Main observations:
 
-- una parte degli errori è dovuta ad ambiguità visiva (anche per un umano),
-- altre misclassificazioni avvengono su cifre apparentemente ben leggibili.
+- some errors are caused by visually ambiguous digits,
+- other errors occur on digits that look clear even to humans.
 
-## Analisi degli errori
+## Error Analysis
 
-Dalla distribuzione degli errori sulle 276 immagini non predette:
+From the distribution over the 276 misclassified images:
 
-- la cifra **3** è la classe più critica,
-- classi come **1** e **5** risultano meno problematiche,
-- possibile direzione migliorativa: aumentare esempi di training per classi più difficili (es. cifra 3).
+- digit **3** is the most critical class,
+- classes like **1** and **5** are less problematic,
+- a possible improvement is adding more training examples for difficult classes (e.g., digit 3).
 
-## Figure
+## Figures
 
 ### 1) Error analysis chart
 
@@ -89,28 +89,28 @@ Dalla distribuzione degli errori sulle 276 immagini non predette:
 
 ![Internal layer comparison chart](figures/mnist_hidden_layer_activations.png)
 
-### 3) Final result/summary visualization
+### 3) Final result / misclassification examples
 
 ![Final result summary](figures/mnist_misclassified_examples.png)
 
-## Struttura file
+## File Structure
 
-Script MATLAB:
+MATLAB scripts:
 
-- `digit_train.m` -> training della rete
-- `digit_test.m` -> inferenza e accuratezza
-- `elu.m` -> funzione di attivazione
-- `elup.m` -> derivata della funzione di attivazione
-- `shuffle.m` -> mescolamento campioni
+- `digit_train.m` -> model training
+- `digit_test.m` -> inference and test accuracy
+- `elu.m` -> activation function
+- `elup.m` -> derivative of activation function
+- `shuffle.m` -> sample shuffling
 
-Parametri salvati:
+Saved parameters:
 
-- pesi: `wtwo.mat`, `wthree.mat`, `wfour.mat`
-- bias: `btwo.mat`, `bthree.mat`, `bfour.mat`
+- weights: `wtwo.mat`, `wthree.mat`, `wfour.mat`
+- biases: `btwo.mat`, `bthree.mat`, `bfour.mat`
 
-## Come eseguire
+## How to Run
 
-Aprire MATLAB nella cartella del progetto.
+Open MATLAB in the project folder.
 
 ### Training
 
@@ -118,10 +118,10 @@ Aprire MATLAB nella cartella del progetto.
 run('digit_train.m')
 ```
 
-Output atteso:
+Expected output:
 
-- stampa epoche,
-- salvataggio pesi/bias nei file `.mat`.
+- epoch progress logs,
+- saved weight/bias `.mat` files.
 
 ### Test
 
@@ -129,28 +129,28 @@ Output atteso:
 run('digit_test.m')
 ```
 
-Output atteso:
+Expected output:
 
-- stampa accuratezza percentuale sul test set.
+- printed test-set accuracy.
 
-## Interpretazione dei risultati
+## Result Interpretation
 
-Il progetto dimostra una pipeline completa di classificazione su MNIST con accuratezza elevata, ma anche con margini di miglioramento rispetto a modelli più moderni (es. CNN).
+This project provides a full MNIST classification pipeline with good accuracy, while still leaving room for improvement compared to modern models (e.g., CNNs).
 
-## Limiti
+## Limitations
 
-- approccio MLP classico, non convoluzionale,
-- sensibilità ad alcune cifre simili (in particolare classe 3),
-- assenza di data augmentation e tecniche avanzate di ottimizzazione.
+- classical MLP (non-convolutional),
+- sensitivity to visually similar digits (especially class 3),
+- no data augmentation or advanced optimization strategies.
 
-## Possibili miglioramenti futuri
+## Possible Future Improvements
 
-- passaggio a CNN,
-- data augmentation,
-- tuning più spinto di iperparametri,
-- loss/attivazione di output più standard per classificazione multiclasse,
-- analisi confusion matrix per classe.
+- migrate to CNN architectures,
+- add data augmentation,
+- perform deeper hyperparameter tuning,
+- use more standard output-loss setups for multiclass classification,
+- include per-class confusion matrix analysis.
 
-## Nota finale
+## Final Note
 
-Questo README descrive in modo autonomo il progetto e i risultati principali.
+This README is self-contained and summarizes the implemented workflow and key results.
