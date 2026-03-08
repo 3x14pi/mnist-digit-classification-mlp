@@ -87,15 +87,15 @@ The figures below are extracted from `Progetto4.pdf` as image-only content (not 
 
 ### 1) Error analysis chart
 
-![Error analysis chart](figures/images_only_02_crop.png)
+![Error analysis chart](figures/images_only_07_crop.png)
 
 ### 2) Internal layer comparison chart
 
-![Internal layer comparison chart](figures/images_only_03_crop.png)
+![Internal layer comparison chart](figures/images_only_08_crop.png)
 
 ### 3) Final result/summary visualization
 
-![Final result summary](figures/images_only_08_crop.png)
+![Final result summary](figures/images_only_06_crop.png)
 
 ## Struttura file
 
